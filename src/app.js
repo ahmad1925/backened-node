@@ -1,0 +1,29 @@
+import express from "express";
+import cookieParser from "cookie-parser";
+
+const app = express();
+
+//configration
+app.use(
+  cors({
+    origin: process.env.ORIGIN_CHOICE,
+    Credential: true,
+  })
+);
+
+app.use(
+  express.json({
+    limit: "19kb",
+  })
+);
+
+app.use(
+  express.urlencoded({
+    limit: "16kb",
+    extended: true,
+  })
+);
+
+app.use(cookieParser());
+
+export default app;
