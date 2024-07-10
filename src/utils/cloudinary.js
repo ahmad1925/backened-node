@@ -14,6 +14,7 @@ const uploadOnCloud = async (localFilePath) => {
       resource_type: "auto",
     });
     console.log("file has been uploaded successfully", response.url);
+    fs.unlinkSync(localFilePath)
     return response;
   } catch (error) {
     fs.unlinkSync(localFilePath); // remove all temporary file on the server
@@ -21,4 +22,4 @@ const uploadOnCloud = async (localFilePath) => {
   }
 };
 
-export default uploadOnCloud;
+export  {uploadOnCloud};
